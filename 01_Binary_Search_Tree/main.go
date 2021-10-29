@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"bst/entity"
+	"spenmo/entity"
 )
 
 // @Created 29/10/2021
@@ -19,7 +19,7 @@ func main() {
 	tree.Insert(8)
 	tree.Insert(14)
 
-	fmt.Println("tree.Find(16)  => ",tree.Find(16))
+	fmt.Println("tree.Find(16) => ",tree.Find(16))
 	fmt.Println("tree.Find(7)  => ",tree.Find(7))
 	fmt.Println("tree.Find(8)  => ",tree.Find(8))
 	fmt.Println("tree.Find(9)  => ",tree.Find(9))
