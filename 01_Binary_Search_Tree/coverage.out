@@ -1,0 +1,23 @@
+mode: set
+spenmo/main.go:11.13,28.2 13 0
+spenmo/entity/tree.go:14.37,16.16 1 1
+spenmo/entity/tree.go:16.16,18.3 1 1
+spenmo/entity/tree.go:18.8,18.26 1 1
+spenmo/entity/tree.go:18.26,22.20 1 1
+spenmo/entity/tree.go:22.20,24.4 1 1
+spenmo/entity/tree.go:24.9,26.4 1 1
+spenmo/entity/tree.go:27.8,31.21 1 1
+spenmo/entity/tree.go:31.21,33.4 1 1
+spenmo/entity/tree.go:33.9,35.4 1 1
+spenmo/entity/tree.go:41.40,43.25 2 1
+spenmo/entity/tree.go:47.2,47.13 1 1
+spenmo/entity/tree.go:43.25,45.3 1 1
+spenmo/entity/tree.go:52.51,55.17 1 1
+spenmo/entity/tree.go:60.2,60.21 1 1
+spenmo/entity/tree.go:65.2,65.20 1 1
+spenmo/entity/tree.go:70.2,70.20 1 1
+spenmo/entity/tree.go:75.2,75.12 1 0
+spenmo/entity/tree.go:55.17,57.3 1 1
+spenmo/entity/tree.go:60.21,62.3 1 1
+spenmo/entity/tree.go:65.20,67.3 1 1
+spenmo/entity/tree.go:70.20,72.3 1 1
