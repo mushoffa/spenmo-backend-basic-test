@@ -61,6 +61,7 @@ Design schema for the following :
  
 Sample schema expected  
 ### Solution
+<iframe width="560" height="315" src='https://dbdiagram.io/embed/617d666dfa17df5ea67627df'> </iframe>
 
 ## 4. Backend Architecture Service
 ### Problem Statement
