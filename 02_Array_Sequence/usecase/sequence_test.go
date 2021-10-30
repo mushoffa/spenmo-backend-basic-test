@@ -36,6 +36,9 @@ func TestSequenceExists_Success(t *testing.T) {
 			sequence: []int{5,6},
 		},
 		{
+			sequence: []int{7,8,10},
+		},
+		{
 			sequence: []int{20, 7, 8, 10, 2, 5, 6},
 		},
 	}
