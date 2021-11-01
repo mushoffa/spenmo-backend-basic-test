@@ -9,6 +9,7 @@ import (
 	"user-service/service"
 
 	"github.com/kelseyhightower/envconfig"
+	"github.com/mushoffa/go-library/grpc"
 )
 
 // @Author Ahmad Ridwan Mushoffa
@@ -31,4 +32,5 @@ func main() {
 	u := usecase.NewUserUsecase(r)
 	s := service.NewUserService(u)
 
+	server := grpc.NewGrpcServer(cfg.ServerPort)
 }
