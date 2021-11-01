@@ -7,9 +7,11 @@ import (
 	"user-service/data/repository"
 	"user-service/domain/usecase"
 	"user-service/service"
+	"user-service/server"
 
 	"github.com/kelseyhightower/envconfig"
-	"github.com/mushoffa/go-library/grpc"
+	// "github.com/mushoffa/go-library/server/grpc"
+	// "github.com/mushoffa/spenmo-proto/protos"
 )
 
 // @Author Ahmad Ridwan Mushoffa
@@ -29,8 +31,11 @@ func main() {
 	}
 
 	r := repository.NewUserRepository(db)
+	r.Initialize()
 	u := usecase.NewUserUsecase(r)
 	s := service.NewUserService(u)
 
-	server := grpc.NewGrpcServer(cfg.ServerPort)
+	server,_ := server.NewGrpcServer(cfg.ServerPort ,s)
+
+	server.Run()
 }
