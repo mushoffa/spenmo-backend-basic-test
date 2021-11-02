@@ -34,17 +34,18 @@ func (r *user) Initialize() {
 
 // @Author Ahmad Ridwan Mushoffa
 // @Created 01/11/2021
-// @Updated
+// @Updated 02/11/2021
 func (r *user) Create(user *entity.User) error {
 	id := uuid.New().String()
 	created := time.Now()
 
-	userDB := model.UserDB {
-		ID: id,
-		Name: user.Name,
+	userDB := model.UserDB{
+		ID:          id,
+		Created:     created,
+		Name:        user.Name,
 		PhoneNumber: user.PhoneNumber,
-		Email: user.Email,
-		DOB: user.DOB,
+		Email:       user.Email,
+		DOB:         user.DOB,
 	}
 
 	if err := r.db.Create(&userDB); err != nil {

@@ -40,5 +40,6 @@ func NewWalletDB(cfg *config.Config) (datasource.Database, error) {
 // @Created 02/11/2021
 // @Updated
 func (db *WalletDB) InitializeDatabase() {
+	db.AutoMigrate(model.WalletDB{})
 	// db.AutoMigrate(model.UserDB{})
 }

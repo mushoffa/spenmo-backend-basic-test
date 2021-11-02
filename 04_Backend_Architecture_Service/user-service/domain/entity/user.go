@@ -1,19 +1,19 @@
 package entity
 
-import(
+import (
 	"time"
 )
 
 // @Author Ahmad Ridwan Mushoffa
 // @Created 01/11/2021
-// @Updated
+// @Updated 02/11/2021
 type User struct {
-	ID          string `json:"id"`
-	Created 	time.Time `json:"created"`
-	Name        string `json:"name"`
-	Email       string `json:"email"`
-	PhoneNumber string `json:"phoneNumber"`
-	DOB         string `json:"dob"`
+	ID          string    `json:"id"`
+	Created     time.Time `json:"created"`
+	Name        string    `json:"name"`
+	Email       string    `json:"email"`
+	PhoneNumber string    `json:"phone_number"`
+	DOB         string    `json:"dob"`
 }
 
 // @Author Ahmad Ridwan Mushoffa

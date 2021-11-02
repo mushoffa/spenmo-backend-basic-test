@@ -60,9 +60,15 @@ func (u *user) RegisterUser(user *entity.User) error {
 
 // @Author Ahmad Ridwan Mushoffa
 // @Created 01/11/2021
-// @Updated
+// @Updated 02/11/2021
 func (u *user) InquiryUser(phoneNumber string) (*entity.User, error) {
-	return nil, nil
+
+	user, err := u.r.FindByPhoneNumber(phoneNumber)
+	if err != nil {
+		return nil, err
+	}
+
+	return user, nil
 }
 
 // @Author Ahmad Ridwan Mushoffa

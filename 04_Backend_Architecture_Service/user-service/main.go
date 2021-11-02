@@ -6,8 +6,8 @@ import (
 	"user-service/data/datasource/postgres"
 	"user-service/data/repository"
 	"user-service/domain/usecase"
-	"user-service/service"
 	"user-service/server"
+	"user-service/service"
 
 	"github.com/kelseyhightower/envconfig"
 	// "github.com/mushoffa/go-library/server/grpc"
@@ -35,7 +35,7 @@ func main() {
 	u := usecase.NewUserUsecase(r)
 	s := service.NewUserService(u)
 
-	server,_ := server.NewGrpcServer(cfg.ServerPort ,s)
+	server, _ := server.NewGrpcServer(cfg.ServerPort, s)
 
 	server.Run()
 }
