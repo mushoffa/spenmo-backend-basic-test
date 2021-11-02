@@ -28,8 +28,8 @@ func NewWalletService(u usecase.WalletUsecase) protos.WalletServiceServer {
 // @Updated
 func (s *wallet) CreateWallet(ctx context.Context, request *protos.CreateWalletRequest) (*protos.CreateWalletResponse, error) {
 	wallet := entity.Wallet{
-		ID:   request.UserId,
-		Name: request.Name,
+		UserID: request.UserId,
+		Name:   request.Name,
 	}
 
 	if err := s.u.CreateWallet(&wallet); err != nil {

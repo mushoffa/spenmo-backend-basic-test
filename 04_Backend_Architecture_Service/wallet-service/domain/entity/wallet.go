@@ -12,7 +12,7 @@ type Wallet struct {
 	Created  time.Time `json:"created,omitempty"`
 	Updated  time.Time `json:"updated,omitempty"`
 	Name     string    `json:"name,omitempty"`
-	MaxLimit float64   `json:"max_limit,omitempty"`
 	Balance  float64   `json:"balance,omitempty"`
+	MaxLimit float64   `json:"max_limit,omitempty"`
 	UserID   string    `json:"user_id,omitempty"`
 }

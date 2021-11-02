@@ -5,7 +5,7 @@ import (
 	"wallet-service/domain/entity"
 	domain "wallet-service/domain/repository"
 
-	"gorm.io/gorm"
+	"github.com/jinzhu/gorm"
 )
 
 // @Author Ahmad Ridwan Mushoffa
@@ -80,11 +80,11 @@ func (u *wallet) UpdateBalance(id, userId string, amount float64) (*entity.Walle
 
 	newBalance := wallet.Balance + amount
 
-	if (newBalance) > wallet.MaxLimit {
-		return nil, entity.ErrWalletMaxLimit
-	}
+	// if (newBalance) > wallet.MaxLimit {
+	// 	return nil, entity.ErrWalletMaxLimit
+	// }
 
-	err = u.r.UpdateBalance(wallet, amount)
+	err = u.r.UpdateBalance(wallet, newBalance)
 	if err != nil {
 		return nil, err
 	}
@@ -98,7 +98,6 @@ func (u *wallet) UpdateBalance(id, userId string, amount float64) (*entity.Walle
 func (u *wallet) IsWalletExist(id string) (bool, error) {
 	_, err := u.r.FindByID(id)
 	if err != nil {
-
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return false, nil
 		}

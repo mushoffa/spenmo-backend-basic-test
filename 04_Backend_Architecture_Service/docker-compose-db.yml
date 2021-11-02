@@ -26,8 +26,8 @@ services:
       - 5482:5432
     volumes:
       - ./db/wallet-db/data:/var/lib/postgresql/data
-    networks:
-      - spenmo_microservice
+    #networks:
+    #  - spenmo_microservice
     restart: unless-stopped
 
   card-db:
@@ -41,8 +41,8 @@ services:
       - 5483:5432
     volumes:
       - ./db/card-db/data:/var/lib/postgresql/data
-    networks:
-      - spenmo_microservice
+    #networks:
+    #  - spenmo_microservice
     restart: unless-stopped
 
   transaction-db:
@@ -56,10 +56,10 @@ services:
       - 5484:5432
     volumes:
       - ./db/transaction-db/data:/var/lib/postgresql/data
-    networks:
-      - spenmo_microservice
+    #networks:
+    #  - spenmo_microservice
     restart: unless-stopped
 
-networks:
-  spenmo_microservice:
-    driver: bridge
+#networks:
+#  spenmo_microservice:
+#    driver: bridge
