@@ -14,14 +14,20 @@ import (
 // @Updated
 type card struct {
 	protos.UnimplementedCardServiceServer
-	u usecase.CardUsecase
+	u      usecase.CardUsecase
+	user   protos.UserServiceClient
+	wallet protos.WalletServiceClient
 }
 
 // @Author Ahmad Ridwan Mushoffa
 // @Created 02/11/2021
 // @Updated
-func NewCardService(u usecase.CardUsecase) protos.CardServiceServer {
-	return &card{u: u}
+func NewCardService(u usecase.CardUsecase, user protos.UserServiceClient, wallet protos.WalletServiceClient) protos.CardServiceServer {
+	return &card{
+		u:      u,
+		user:   user,
+		wallet: wallet,
+	}
 }
 
 // @Author Ahmad Ridwan Mushoffa
@@ -128,8 +134,55 @@ func (s *card) InquiryCard(ctx context.Context, request *protos.InquiryCardReque
 // @Created 02/11/2021
 // @Updated
 func (s *card) LinkCard(ctx context.Context, request *protos.LinkCardRequest) (*protos.LinkCardResponse, error) {
+	card, err := s.u.InquiryCard(request.Id)
+	if err != nil {
+		return nil, err
+	}
 
-	response := protos.LinkCardResponse{}
+	// fmt.Println("Card: ", card)
+
+	user, err := s.user.InquiryUser(ctx, &protos.InquiryUserRequest{
+		PhoneNumber: request.UserId,
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	// fmt.Println("User: ", user)
+
+	wallet, err := s.wallet.InquiryBalance(ctx, &protos.InquiryBalanceRequest{
+		Id: request.WalletId,
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	// fmt.Println("Wallet: ", wallet)
+
+	card.UserID = user.User.Id
+	card.Name = user.User.Name
+	card.WalletID = wallet.Wallet.Id
+
+	if err := s.u.LinkCard(card); err != nil {
+		return nil, err
+	}
+
+	response := protos.LinkCardResponse{
+		Card: &protos.Card{
+			Id:           card.ID,
+			Created:      card.Created.String(),
+			Updated:      card.Created.String(),
+			Pan:          card.PAN,
+			Name:         card.Name,
+			ExpiryDate:   card.ExpiryDate,
+			LimitDaily:   card.LimitDaily,
+			LimitMonthly: card.LimitMonthly,
+			Type:         card.CardType,
+			Status:       card.Status,
+			WalletId:     card.WalletID,
+			UserId:       card.UserID,
+		},
+	}
 
 	return &response, nil
 }

@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/gin-gonic/gin"
+	"github.com/mushoffa/spenmo-proto/protos"
 )
 
 // @Author Ahmad Ridwan Mushoffa
@@ -15,15 +16,16 @@ type UserController interface {
 
 // @Author Ahmad Ridwan Mushoffa
 // @Created 01/11/2021
-// @Updated
+// @Updated 02/11/2021
 type userController struct {
+	client protos.UserServiceClient
 }
 
 // @Author Ahmad Ridwan Mushoffa
 // @Created 01/11/2021
-// @Updated
-func NewUserController() UserController {
-	return &userController{}
+// @Updated 02/11/2021
+func NewUserController(client protos.UserServiceClient) UserController {
+	return &userController{client}
 }
 
 // @Author Ahmad Ridwan Mushoffa

@@ -10,5 +10,6 @@ type CardRepository interface {
 	Create(*entity.Card) error
 	FindByID(string) (*entity.Card, error)
 	FindAll() ([]entity.Card, error)
+	UpdateCard(*entity.Card) error
 	UpdateStatus(*entity.Card, string) error
 }

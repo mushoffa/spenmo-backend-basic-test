@@ -88,6 +88,28 @@ func (r *card) FindAll() ([]entity.Card, error) {
 // @Author Ahmad Ridwan Mushoffa
 // @Created 02/11/2021
 // @Updated
+func (r *card) UpdateCard(card *entity.Card) error {
+	updated := time.Now()
+	card.Status = "LINKED"
+
+	if err := r.db.GetInstance().Model(&model.CardDB{}).
+		Where("id = ?", card.ID).
+		Update("status", card.Status).
+		Update("name", card.Name).
+		Update("updated", updated).
+		Update("user_id", card.UserID).
+		Update("wallet_id", card.WalletID).Error; err != nil {
+		return err
+	}
+
+	card.Updated = updated
+
+	return nil
+}
+
+// @Author Ahmad Ridwan Mushoffa
+// @Created 02/11/2021
+// @Updated
 func (r *card) UpdateStatus(card *entity.Card, status string) error {
 	// updated := time.Now()
 
