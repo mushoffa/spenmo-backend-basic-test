@@ -2,7 +2,7 @@ version: '3.8'
 services:
   user-db:
     image: postgres:alpine
-    container_name: user-db
+    container_name: spenmo-user-db
     environment:
       - POSTGRES_DB=user
       - POSTGRES_USER=admin
@@ -11,4 +11,55 @@ services:
       - 5481:5432
     volumes:
       - ./db/user-db/data:/var/lib/postgresql/data
+    #networks:
+    #  - spenmo_microservice
     restart: unless-stopped
+
+  wallet-db:
+    image: postgres:alpine
+    container_name: spenmo-wallet-db
+    environment:
+      - POSTGRES_DB=wallet
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password
+    ports:
+      - 5482:5432
+    volumes:
+      - ./db/wallet-db/data:/var/lib/postgresql/data
+    networks:
+      - spenmo_microservice
+    restart: unless-stopped
+
+  card-db:
+    image: postgres:alpine
+    container_name: spenmo-card-db
+    environment:
+      - POSTGRES_DB=card
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password
+    ports:
+      - 5483:5432
+    volumes:
+      - ./db/card-db/data:/var/lib/postgresql/data
+    networks:
+      - spenmo_microservice
+    restart: unless-stopped
+
+  transaction-db:
+    image: postgres:alpine
+    container_name: spenmo-transaction-db
+    environment:
+      - POSTGRES_DB=transaction
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password
+    ports:
+      - 5484:5432
+    volumes:
+      - ./db/transaction-db/data:/var/lib/postgresql/data
+    networks:
+      - spenmo_microservice
+    restart: unless-stopped
+
+networks:
+  spenmo_microservice:
+    driver: bridge
