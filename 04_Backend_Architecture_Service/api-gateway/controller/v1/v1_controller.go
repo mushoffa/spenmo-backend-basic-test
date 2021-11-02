@@ -22,5 +22,6 @@ func NewV1Controller(user protos.UserServiceClient, wallet protos.WalletServiceC
 		User:   NewUserController(user),
 		Wallet: NewWalletController(wallet),
 		Card:   NewCardController(card),
+		Transaction: NewTransactionController(),
 	}
 }
