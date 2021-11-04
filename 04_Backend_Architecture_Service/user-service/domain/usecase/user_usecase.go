@@ -68,8 +68,13 @@ func (u *user) GetAllUsers() ([]entity.User, error) {
 
 // @Author Ahmad Ridwan Mushoffa
 // @Created 01/11/2021
-// @Updated 02/11/2021
+// @Updated 04/11/2021
 func (u *user) InquiryUser(phoneNumber string) (*entity.User, error) {
+	userEntity := entity.User{PhoneNumber: phoneNumber}
+
+	if err := userEntity.ValidatePhoneNumber(); err != nil {
+		return nil, err
+	}
 
 	user, err := u.r.FindByPhoneNumber(phoneNumber)
 	if err != nil {

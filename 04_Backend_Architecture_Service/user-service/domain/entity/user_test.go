@@ -3,7 +3,7 @@ package entity_test
 import (
 	"fmt"
 	"testing"
-	"time"
+	// "time"
 	"user-service/domain/entity"
 )
 
@@ -18,11 +18,11 @@ func TestUserName_Empty(t *testing.T) {
 	}
 }
 
-func TestTime(t *testing.T) {
-	today := time.Now()
-	dateLayout := "02-01-2006"
-	timeLayout := "15:04:05"
-	
-	fmt.Println("Date: ", today.Format(dateLayout))
-	fmt.Println("Time: ", today.Format(timeLayout))
+// @Author Ahmad Ridwan Mushoffa
+// @Created 04/11/2021
+// @Updated
+func TestDOB_Invalid(t *testing.T) {
+	user := entity.User{DOB: "01-12-2000"}
+	err := user.ValidateDateOfBirth()
+	fmt.Println(err)
 }

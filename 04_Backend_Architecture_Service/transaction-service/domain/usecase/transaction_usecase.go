@@ -49,7 +49,11 @@ func (u *transaction) Purchase(ctx context.Context, transaction *entity.Transact
 	}
 
 	// Inquiry purchase limit: WIP
+	if transaction.Amount > cardResponse.Card.LimitDaily {
+		return entity.ErrExceedsDailyLimit
+	}
 
+	// Inquiry wallet to ensure the balance is sufficient to process payment
 	walletResponse, err := u.wallet.InquiryBalance(ctx, &protos.InquiryBalanceRequest{Id: cardResponse.Card.WalletId})
 	if err != nil {
 		return err
@@ -58,7 +62,6 @@ func (u *transaction) Purchase(ctx context.Context, transaction *entity.Transact
 	if walletResponse.Wallet.Balance < transaction.Amount {
 		return entity.ErrInsufficientBalance
 	}
-
 
 	transaction.AccountName = cardResponse.Card.Name
 	transaction.WalletID = walletResponse.Wallet.Id
