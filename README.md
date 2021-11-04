@@ -7,6 +7,11 @@
 4. [Backend Architecture Service](#backend-architecture-service)
     * [Prerequisite](#4-prerequisite)
     * [System Architecture](#4-system-architecture)
+      * [API Gateway](#4-2-api-gateway)
+      * [User Service](#4-2-user-service)
+      * [Wallet Service](#4-2-wallet-service)
+      * [Card Service](#4-2-card-service)
+      * [Transaction Service](#4-2-transaction-service)
 
 <a name="binary-search-tree"/>   
 
@@ -96,3 +101,25 @@ any format you like including README.md
 <a name="4-system-architecture"/>
 
 ### System Architecture
+![](04_Backend_Architecture_Service/assets/system_architecture.png)
+
+<a name="4-2-api-gateway"/>
+
+#### API Gateway
+![](04_Backend_Architecture_Service/assets/api_gateway_architecture.png)
+
+<a name="4-2-user-service"/>
+
+#### User Service
+
+<a name="4-2-wallet-service"/>
+
+#### Wallet Service
+
+<a name="4-2-card-service"/>
+
+#### Card Service
+
+<a name="4-2-transaction-service"/>
+
+#### Transaction Service
