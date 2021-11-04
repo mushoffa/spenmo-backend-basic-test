@@ -2,27 +2,33 @@ package main
 
 import (
 	"log"
-
-	"api-gateway/config"
-	v1 "api-gateway/controller/v1"
-	"api-gateway/router"
+	"transaction-service/config"
+	"transaction-service/data/datasource/postgres"
+	"transaction-service/data/repository"
+	"transaction-service/domain/usecase"
+	"transaction-service/server"
+	"transaction-service/service"
 
 	"github.com/kelseyhightower/envconfig"
 	client "github.com/mushoffa/go-library/server/grpc"
-	server "github.com/mushoffa/go-library/server/http"
 	"github.com/mushoffa/spenmo-proto/protos"
 	"google.golang.org/grpc"
 )
 
 // @Author Ahmad Ridwan Mushoffa
-// @Created 01/11/2021
-// @Updated 02/11/2021
+// @Created 03/11/2021
+// @Updated
 func main() {
 	var cfg config.Config
 
 	err := envconfig.Process("", &cfg)
 	if err != nil {
 		log.Fatalf("Error loading environment config: %v", err)
+	}
+
+	db, err := postgres.NewTransactionDB(&cfg)
+	if err != nil {
+		log.Fatalf("Failed to connect to database: %v", err)
 	}
 
 	userClient, err := client.NewGrpcClient(cfg.UserClientURL, grpc.WithInsecure())
@@ -40,22 +46,15 @@ func main() {
 		log.Fatalf("Could not connect to Card GRPC Client: %s", err)
 	}
 
-	transactionClient, err := client.NewGrpcClient(cfg.TransactionClientURL, grpc.WithInsecure())
-	if err != nil {
-		log.Fatalf("Could not connect to Transaction GRPC Client: %s", err)
-	}
+	userClientService := protos.NewUserServiceClient(userClient.Conn)
+	walletClientService := protos.NewWalletServiceClient(walletClient.Conn)
+	cardClientService := protos.NewCardServiceClient(cardClient.Conn)
 
-	userService := protos.NewUserServiceClient(userClient.Conn)
-	walletService := protos.NewWalletServiceClient(walletClient.Conn)
-	cardService := protos.NewCardServiceClient(cardClient.Conn)
-	transactionService := protos.NewTransactionServiceClient(transactionClient.Conn)
+	r := repository.NewTransactionRepository(db)
+	r.Initialize()
+	u := usecase.NewTransactionUsecase(r)
+	s := service.NewTransactionService(u, userClientService, walletClientService, cardClientService)
 
-	v1Controller := v1.NewV1Controller(userService, walletService, cardService, transactionService)
-
-	router := router.NewRouter(v1Controller)
-	router.InitializeRouter()
-
-	server := server.NewHttpServer(cfg.ServerPort, router.Gin)
+	server, _ := server.NewGrpcServer(cfg.ServerPort, s)
 	server.Run()
-
 }

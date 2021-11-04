@@ -3,16 +3,18 @@ package v1
 import (
 	"context"
 	"net/http"
-	
+
 	"api-gateway/data/model"
+
 	"github.com/gin-gonic/gin"
 	"github.com/mushoffa/spenmo-proto/protos"
 )
 
 // @Author Ahmad Ridwan Mushoffa
 // @Created 01/11/2021
-// @Updated
+// @Updated 03/11/2021
 type TransactionController interface {
+	Create(*gin.Context)
 	Purchase(*gin.Context)
 	Topup(*gin.Context)
 }
@@ -26,9 +28,39 @@ type transactionController struct {
 
 // @Author Ahmad Ridwan Mushoffa
 // @Created 01/11/2021
+// @Updated 03/11/2021
+func NewTransactionController(client protos.TransactionServiceClient) TransactionController {
+	return &transactionController{client}
+}
+
+// @Author Ahmad Ridwan Mushoffa
+// @Created 03/11/2021
 // @Updated
-func NewTransactionController() TransactionController {
-	return &transactionController{}
+func (c *transactionController) Create(ctx *gin.Context) {
+	parent := context.Background()
+	defer parent.Done()
+
+	meta := model.Meta{}
+	request := model.CreateBillRequest{}
+	response := model.BaseApiResponse{Meta: meta.GetDefaultError()}
+
+	if err := ctx.ShouldBindJSON(&request); err != nil {
+		response.Meta.Message = err.Error()
+		ctx.JSON(http.StatusBadRequest, response)
+		return
+	}
+
+	// res, err := c.client.Purchase(context.Background(), &protos.PurchaseRequest{})
+	// if err != nil {
+	// 	response.Meta.Message = err.Error()
+	// 	ctx.JSON(http.StatusBadRequest, response)
+	// 	return
+	// }
+
+	response.Data = "res"
+	meta.Message = "Success"
+	response.Meta = meta.GetDefaultSuccess()
+	ctx.JSON(http.StatusOK, response)
 }
 
 // @Author Ahmad Ridwan Mushoffa
@@ -48,9 +80,7 @@ func (c *transactionController) Purchase(ctx *gin.Context) {
 		return
 	}
 
-	res, err := c.client.Purchase(context.Background(), &protos.PurchaseRequest{
-	
-	})
+	res, err := c.client.Purchase(context.Background(), &protos.PurchaseRequest{})
 	if err != nil {
 		response.Meta.Message = err.Error()
 		ctx.JSON(http.StatusBadRequest, response)
@@ -81,7 +111,9 @@ func (c *transactionController) Topup(ctx *gin.Context) {
 	}
 
 	res, err := c.client.Topup(context.Background(), &protos.TopupRequest{
-	
+		AccountNumber: request.AccountNumber,
+		WalletId:      request.WalletID,
+		Amount:        request.Amount,
 	})
 	if err != nil {
 		response.Meta.Message = err.Error()

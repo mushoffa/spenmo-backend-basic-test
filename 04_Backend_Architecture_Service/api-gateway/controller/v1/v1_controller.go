@@ -16,12 +16,12 @@ type V1Controller struct {
 
 // @Author Ahmad Ridwan Mushoffa
 // @Created 02/11/2021
-// @Updated
-func NewV1Controller(user protos.UserServiceClient, wallet protos.WalletServiceClient, card protos.CardServiceClient) *V1Controller {
+// @Updated 03/11/2021
+func NewV1Controller(user protos.UserServiceClient, wallet protos.WalletServiceClient, card protos.CardServiceClient, transaction protos.TransactionServiceClient) *V1Controller {
 	return &V1Controller{
-		User:   NewUserController(user),
-		Wallet: NewWalletController(wallet),
-		Card:   NewCardController(card),
-		Transaction: NewTransactionController(),
+		User:        NewUserController(user),
+		Wallet:      NewWalletController(wallet),
+		Card:        NewCardController(card),
+		Transaction: NewTransactionController(transaction),
 	}
 }

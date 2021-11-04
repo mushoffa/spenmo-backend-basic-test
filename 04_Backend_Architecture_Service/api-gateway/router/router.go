@@ -33,7 +33,7 @@ func (r *Router) InitializeRouter() {
 
 // @Author Ahmad Ridwan Mushoffa
 // @Created 01/11/2021
-// @Updated 02/11/2021
+// @Updated 03/11/2021
 func (r *Router) initializeV1Router() {
 	v1 := r.Gin.Group("/v1")
 
@@ -45,12 +45,16 @@ func (r *Router) initializeV1Router() {
 
 	wallets := v1.Group("/wallets")
 	wallets.POST("/", r.v1.Wallet.Create)
+	wallets.GET("/", r.v1.Wallet.GetAll)
+	wallets.GET("/user/:id", r.v1.Wallet.GetByAccountNumber)
 	wallets.GET("/:id", r.v1.Wallet.GetByID)
 
 	users := v1.Group("/users")
 	users.POST("/", r.v1.User.Register)
+	users.GET("/", r.v1.User.GetAll)
 
 	transactions := v1.Group("/transactions")
+	transactions.POST("/", r.v1.Transaction.Create)
 	transactions.POST("/purchase", r.v1.Transaction.Purchase)
 	transactions.POST("/topup", r.v1.Transaction.Topup)
 }

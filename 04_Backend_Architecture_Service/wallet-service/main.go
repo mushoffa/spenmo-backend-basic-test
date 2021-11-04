@@ -10,6 +10,9 @@ import (
 	"wallet-service/service"
 
 	"github.com/kelseyhightower/envconfig"
+	client "github.com/mushoffa/go-library/server/grpc"
+	"github.com/mushoffa/spenmo-proto/protos"
+	"google.golang.org/grpc"
 )
 
 // @Author Ahmad Ridwan Mushoffa
@@ -28,10 +31,17 @@ func main() {
 		log.Fatalf("Error loading environment config: %v", err)
 	}
 
+	userClient, err := client.NewGrpcClient(cfg.UserClientURL, grpc.WithInsecure())
+	if err != nil {
+		log.Fatalf("Could not connect to User GRPC Client: %s", err)
+	}
+
+	userClientService := protos.NewUserServiceClient(userClient.Conn)
+
 	r := repository.NewWalletRepository(db)
 	r.Initialize()
 	u := usecase.NewWalletUsecase(r)
-	s := service.NewWalletService(u)
+	s := service.NewWalletService(u, userClientService)
 
 	server, _ := server.NewGrpcServer(cfg.ServerPort, s)
 	server.Run()

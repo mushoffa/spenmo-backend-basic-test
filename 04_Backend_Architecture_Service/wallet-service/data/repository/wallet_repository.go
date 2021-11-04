@@ -33,17 +33,18 @@ func (r *wallet) Initialize() {
 
 // @Author Ahmad Ridwan Mushoffa
 // @Created 02/11/2021
-// @Updated
+// @Updated 03/11/2021
 func (r *wallet) Create(wallet *entity.Wallet) error {
 	id := uuid.New().String()
 	created := time.Now()
 
 	walletDB := model.WalletDB{
-		ID:      id,
-		Created: created,
-		Name:    wallet.Name,
-		Balance: 0,
-		UserID:  wallet.UserID,
+		ID:            id,
+		Created:       created,
+		Name:          wallet.Name,
+		Balance:       0,
+		MaxLimit:      wallet.MaxLimit,
+		AccountNumber: wallet.AccountNumber,
 	}
 
 	if err := r.db.Create(&walletDB); err != nil {
@@ -70,6 +71,32 @@ func (r *wallet) FindByID(id string) (*entity.Wallet, error) {
 }
 
 // @Author Ahmad Ridwan Mushoffa
+// @Created 03/11/2021
+// @Updated
+func (r *wallet) FindByAccountNumber(accountNumber string) ([]entity.Wallet, error) {
+	wallets := []entity.Wallet{}
+
+	if err := r.db.FindByID("account_number", accountNumber, &wallets); err != nil {
+		return nil, err
+	}
+
+	return wallets, nil
+}
+
+// @Author Ahmad Ridwan Mushoffa
+// @Created 03/11/2021
+// @Updated
+func (r *wallet) FindAll() ([]entity.Wallet, error) {
+	wallets := []entity.Wallet{}
+
+	if err := r.db.FindAll(&wallets); err != nil {
+		return nil, err
+	}
+
+	return wallets, nil
+}
+
+// @Author Ahmad Ridwan Mushoffa
 // @Created 02/11/2021
 // @Updated
 func (r *wallet) UpdateBalance(wallet *entity.Wallet, balance float64) error {
@@ -84,7 +111,7 @@ func (r *wallet) UpdateBalance(wallet *entity.Wallet, balance float64) error {
 
 	if err := r.db.GetInstance().Model(&model.WalletDB{}).
 		Where("id = ?", wallet.ID).
-		Where("user_id = ?", wallet.UserID).
+		Where("account_number = ?", wallet.AccountNumber).
 		Update("balance", balance).
 		Update("updated", updated).Error; err != nil {
 		return err

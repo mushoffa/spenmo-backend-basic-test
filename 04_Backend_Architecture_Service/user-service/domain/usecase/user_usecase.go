@@ -12,9 +12,10 @@ import (
 
 // @Author Ahmad Ridwan Mushoffa
 // @Created 01/11/2021
-// @Updated
+// @Updated 03/11/2021
 type UserUsecase interface {
 	RegisterUser(*entity.User) error
+	GetAllUsers() ([]entity.User, error)
 	InquiryUser(string) (*entity.User, error)
 	IsUserExist(string) (bool, error)
 }
@@ -56,6 +57,13 @@ func (u *user) RegisterUser(user *entity.User) error {
 	}
 
 	return nil
+}
+
+// @Author Ahmad Ridwan Mushoffa
+// @Created 03/11/2021
+// @Updated
+func (u *user) GetAllUsers() ([]entity.User, error) {
+	return u.r.FindAll()
 }
 
 // @Author Ahmad Ridwan Mushoffa

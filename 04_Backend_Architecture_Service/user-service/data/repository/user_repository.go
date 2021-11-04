@@ -83,3 +83,16 @@ func (r *user) FindByPhoneNumber(phoneNumber string) (*entity.User, error) {
 
 	return &user, nil
 }
+
+// @Author Ahmad Ridwan Mushoffa
+// @Created 03/11/2021
+// @Updated
+func (r *user) FindAll() ([]entity.User, error) {
+	users := []entity.User{}
+
+	if err := r.db.FindAll(&users); err != nil {
+		return nil, err
+	}
+
+	return users, nil
+}

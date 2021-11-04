@@ -10,9 +10,11 @@ import (
 
 // @Author Ahmad Ridwan Mushoffa
 // @Created 02/11/2021
-// @Updated
+// @Updated 03/11/2021
 type WalletUsecase interface {
 	CreateWallet(*entity.Wallet) error
+	GetAllWallets() ([]entity.Wallet, error)
+	GetByAccountNumber(string) ([]entity.Wallet, error)
 	InquiryBalance(string) (*entity.Wallet, error)
 	UpdateBalance(string, string, float64) (*entity.Wallet, error)
 	IsWalletExist(string) (bool, error)
@@ -54,6 +56,20 @@ func (u *wallet) CreateWallet(wallet *entity.Wallet) error {
 }
 
 // @Author Ahmad Ridwan Mushoffa
+// @Created 03/11/2021
+// @Updated
+func (u *wallet) GetAllWallets() ([]entity.Wallet, error) {
+	return u.r.FindAll()
+}
+
+// @Author Ahmad Ridwan Mushoffa
+// @Created 03/11/2021
+// @Updated
+func (u *wallet) GetByAccountNumber(accountNumber string) ([]entity.Wallet, error) {
+	return u.r.FindByAccountNumber(accountNumber)
+}
+
+// @Author Ahmad Ridwan Mushoffa
 // @Created 02/11/2021
 // @Updated
 func (u *wallet) InquiryBalance(id string) (*entity.Wallet, error) {
@@ -74,9 +90,9 @@ func (u *wallet) UpdateBalance(id, userId string, amount float64) (*entity.Walle
 		return nil, err
 	}
 
-	if wallet.UserID != userId {
-		return nil, entity.ErrInvalidUser
-	}
+	// if wallet.UserID != userId {
+	// 	return nil, entity.ErrInvalidUser
+	// }
 
 	newBalance := wallet.Balance + amount
 

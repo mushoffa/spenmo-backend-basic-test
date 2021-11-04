@@ -64,8 +64,12 @@ github.com/mattn/go-sqlite3 v1.14.0 h1:mLyGNKR8+Vv9CAU7PphKa2hkEqxxhn8i32J6FPj1/
 github.com/mattn/go-sqlite3 v1.14.0/go.mod h1:JIl7NbARA7phWnGvh0LKTyg7S9BA+6gx71ShQilpsus=
 github.com/mushoffa/go-library v0.0.0-20211101154114-99601e5f0985 h1:n3U9DzZaYCyCh8V5+/jGHunQ2iskEOUzQ3kLTHU5xl0=
 github.com/mushoffa/go-library v0.0.0-20211101154114-99601e5f0985/go.mod h1:mdg1nXOxAFFxjKXoplu/049v8ug9tF4jFjS0br9x5D0=
-github.com/mushoffa/spenmo-proto v0.0.0-20211102024656-2a65d609affb h1:N8+BgyK/BPqZdBFhAtrRC9N6PSfkjRus7P7BxGNiovs=
-github.com/mushoffa/spenmo-proto v0.0.0-20211102024656-2a65d609affb/go.mod h1:FoEYnaMwWXjObjuDj2gWZ11EoWA7h5znoTtainYGUOI=
+github.com/mushoffa/spenmo-proto v0.0.0-20211103043609-599f804ff69a h1:pek+WaSO9hYrBhRAm188wLB2JhvpVDEq/iVqqVk+KrI=
+github.com/mushoffa/spenmo-proto v0.0.0-20211103043609-599f804ff69a/go.mod h1:FoEYnaMwWXjObjuDj2gWZ11EoWA7h5znoTtainYGUOI=
+github.com/mushoffa/spenmo-proto v0.0.2 h1:sCkNz/IHy+6ZDTkWJFUx+TldUjTEb9c+AQqryAsMYgk=
+github.com/mushoffa/spenmo-proto v0.0.2/go.mod h1:FoEYnaMwWXjObjuDj2gWZ11EoWA7h5znoTtainYGUOI=
+github.com/mushoffa/spenmo-proto v0.0.3 h1:QvPkMnq3QUmAyY5t7WsSVNpr9Op50HiQkGyu0ND1eEc=
+github.com/mushoffa/spenmo-proto v0.0.3/go.mod h1:FoEYnaMwWXjObjuDj2gWZ11EoWA7h5znoTtainYGUOI=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/prometheus/client_model v0.0.0-20190812154241-14fe0d1b01d4/go.mod h1:xMI15A0UPsDsEKsMN9yxemIoYk6Tm2C1GtYGdfGttqA=
 github.com/rogpeppe/fastuuid v1.2.0/go.mod h1:jVj6XXZzXRy/MSR5jhDC/2q6DgLz+nrA6LYCDYWNEvQ=
@@ -142,7 +146,5 @@ gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8
 gopkg.in/yaml.v2 v2.2.2/go.mod h1:hI93XBmqTisBFMUTm0b8Fm+jr3Dg1NNxqwp+5A1VGuI=
 gopkg.in/yaml.v2 v2.2.3/go.mod h1:hI93XBmqTisBFMUTm0b8Fm+jr3Dg1NNxqwp+5A1VGuI=
 gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
-gorm.io/gorm v1.22.2 h1:1iKcvyJnR5bHydBhDqTwasOkoo6+o4Ms5cknSt6qP7I=
-gorm.io/gorm v1.22.2/go.mod h1:F+OptMscr0P2F2qU97WT1WimdH9GaQPoDW7AYd5i2Y0=
 honnef.co/go/tools v0.0.0-20190102054323-c2f93a96b099/go.mod h1:rf3lG4BRIbNafJWhAfAdb/ePZxsR/4RtNHQocxwk9r4=
 honnef.co/go/tools v0.0.0-20190523083050-ea95bdfd59fc/go.mod h1:rf3lG4BRIbNafJWhAfAdb/ePZxsR/4RtNHQocxwk9r4=

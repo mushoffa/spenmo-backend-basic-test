@@ -6,6 +6,7 @@ import (
 	"user-service/domain/entity"
 	"user-service/domain/usecase"
 
+	"github.com/golang/protobuf/ptypes/empty"
 	"github.com/mushoffa/spenmo-proto/protos"
 )
 
@@ -48,6 +49,37 @@ func (s *user) RegisterUser(ctx context.Context, request *protos.RegisterUserReq
 			Email:       user.Email,
 			Dob:         user.DOB,
 		},
+	}
+
+	return &response, nil
+}
+
+// @Author Ahmad Ridwan Mushoffa
+// @Created 03/11/2021
+// @Updated
+func (s *user) GetAllUsers(ctx context.Context, request *empty.Empty) (*protos.GetAllUsersResponse, error) {
+	_users, err := s.u.GetAllUsers()
+	if err != nil {
+		return nil, err
+	}
+
+	users := []*protos.User{}
+
+	for _, _user := range _users {
+		user := &protos.User{
+			Id:          _user.ID,
+			Created:     _user.Created.String(),
+			Name:        _user.Name,
+			PhoneNumber: _user.PhoneNumber,
+			Email:       _user.Email,
+			Dob:         _user.DOB,
+		}
+
+		users = append(users, user)
+	}
+
+	response := protos.GetAllUsersResponse{
+		Users: users,
 	}
 
 	return &response, nil
