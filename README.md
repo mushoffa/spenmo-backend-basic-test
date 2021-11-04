@@ -2,9 +2,13 @@
 
 ## Contents
 1. [Binary Search Tree](#binary-search-tree)
-2. Array Sequence
-3. Backend Database Schema
-4. Backend Architecture Service
+2. [Array Sequence](#array-sequence)
+3. [Backend Database Schema](#backend-database-schema)
+4. [Backend Architecture Service](#backend-architecture-service)
+    * [Prerequisite](#4-prerequisite)
+    * [System Architecture](#4-system-architecture)
+
+<a name="binary-search-tree"/>   
 
 ## 1. Binary Search Tree
 ### Problem Statement
@@ -36,6 +40,8 @@ func searchBST(root *TreeNode, val int) *TreeNode {
 
 ### Solution
 
+<a name="array-sequence"/>  
+
 ## 2. Array Sequence
 Int [] main = new int[] {20, 7, 8, 10, 2, 5, 6} // non repeating numbers  
 Int [] seq= new int [] {1,4}  
@@ -48,6 +54,7 @@ func sequenceExists(data []int, input []int) bool {
   // Complete function block
 }
 ```
+<a name="backend-database-schema"/>
 
 ## 3. Backend Database Schema
 ### Problem Statement
@@ -61,7 +68,9 @@ Design schema for the following :
  
 Sample schema expected  
 ### Solution
-<iframe width="560" height="315" src='https://dbdiagram.io/embed/617d666dfa17df5ea67627df'> </iframe>
+![](03_Backend_Database_Schema/03_database_schema.png)
+
+<a name="backend-architecture-service"/>
 
 ## 4. Backend Architecture Service
 ### Problem Statement
@@ -79,3 +88,11 @@ plan in the codebase/README.md
 any format you like including README.md
 6. [Bonus] Implement API rate limiting
 ### Solution
+
+<a name="4-prerequisite"/> 
+
+### Prerequisite
+
+<a name="4-system-architecture"/>
+
+### System Architecture
