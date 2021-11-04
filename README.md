@@ -217,15 +217,19 @@ any format you like including README.md
 <a name="4-2-user-service"/>
 
 #### User Service
+![](04_Backend_Architecture_Service/assets/user_service_architecture.png)
 
 <a name="4-2-wallet-service"/>
 
 #### Wallet Service
+![](04_Backend_Architecture_Service/assets/wallet_service_architecture.png)
 
 <a name="4-2-card-service"/>
 
 #### Card Service
+![](04_Backend_Architecture_Service/assets/card_service_architecture.png)
 
 <a name="4-2-transaction-service"/>
 
 #### Transaction Service
+![](04_Backend_Architecture_Service/assets/transaction_service_architecture.png)
