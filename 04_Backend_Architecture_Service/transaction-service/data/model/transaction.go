@@ -13,7 +13,7 @@ type TransactionDB struct {
 	Amount          float64 `gorm:"amount"`
 	WalletID        string  `gorm:"wallet_id"`
 	WalletName      string  `gorm:"wallet_name"`
-	TransactionType string  `gorm:"transactionType"`
+	TransactionType string  `gorm:"transaction_type"`
 	ReferenceNumber string  `gorm:"reference_number"`
 	Status          string  `gorm:"status"`
 	Description     string  `gorm:"description"`

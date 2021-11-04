@@ -3,6 +3,7 @@ package entity_test
 import (
 	"fmt"
 	"testing"
+	"time"
 	"user-service/domain/entity"
 )
 
@@ -15,4 +16,13 @@ func TestUserName_Empty(t *testing.T) {
 	if err != nil {
 		fmt.Println(err)
 	}
+}
+
+func TestTime(t *testing.T) {
+	today := time.Now()
+	dateLayout := "02-01-2006"
+	timeLayout := "15:04:05"
+	
+	fmt.Println("Date: ", today.Format(dateLayout))
+	fmt.Println("Time: ", today.Format(timeLayout))
 }

@@ -61,11 +61,11 @@ func (r *card) Create(card *entity.Card) error {
 
 // @Author Ahmad Ridwan Mushoffa
 // @Created 02/11/2021
-// @Updated
+// @Updated 04/11/2021
 func (r *card) FindByID(id string) (*entity.Card, error) {
 	card := entity.Card{}
 
-	if err := r.db.FindByID("id", id, &card); err != nil {
+	if err := r.db.FindByID("pan", id, &card); err != nil {
 		return nil, err
 	}
 

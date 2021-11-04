@@ -123,7 +123,7 @@ func (c *cardController) GetAll(ctx *gin.Context) {
 
 // @Author Ahmad Ridwan Mushoffa
 // @Created 02/11/2021
-// @Updated 
+// @Updated 04/11/2021
 func (c *cardController) Link(ctx *gin.Context) {
 	parent := context.Background()
 	defer parent.Done()
@@ -139,9 +139,9 @@ func (c *cardController) Link(ctx *gin.Context) {
 	}
 
 	res, err := c.client.LinkCard(context.Background(), &protos.LinkCardRequest {
-		Id: request.CardID,
+		Id: request.PAN,
 		WalletId: request.WalletID,
-		UserId: request.UserID,
+		UserId: request.AccountNumber,
 	})
 	if err != nil {
 		response.Meta.Message = err.Error()

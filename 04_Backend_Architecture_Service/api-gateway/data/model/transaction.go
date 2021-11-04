@@ -8,8 +8,10 @@ type CreateBillRequest struct {
 
 // @Author Ahmad Ridwan Mushoffa
 // @Created 02/11/2021
-// @Updated
+// @Updated 04/11/2021
 type PurchaseRequest struct {
+	PAN 	string 		`json:"pan" binding:"required"`
+	Amount 	float64 	`json:"amount" binding:"required"` 
 }
 
 // @Author Ahmad Ridwan Mushoffa

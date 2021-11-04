@@ -7,7 +7,7 @@ import (
 	"transaction-service/data/repository"
 	"transaction-service/domain/usecase"
 	"transaction-service/server"
-	"transaction-service/service"
+	"transaction-service/rpc"
 
 	"github.com/kelseyhightower/envconfig"
 	client "github.com/mushoffa/go-library/server/grpc"
@@ -17,7 +17,7 @@ import (
 
 // @Author Ahmad Ridwan Mushoffa
 // @Created 03/11/2021
-// @Updated
+// @Updated 04/11/2021
 func main() {
 	var cfg config.Config
 
@@ -52,8 +52,8 @@ func main() {
 
 	r := repository.NewTransactionRepository(db)
 	r.Initialize()
-	u := usecase.NewTransactionUsecase(r)
-	s := service.NewTransactionService(u, userClientService, walletClientService, cardClientService)
+	u := usecase.NewTransactionUsecase(r, userClientService, cardClientService, walletClientService)
+	s := rpc.NewTransactionService(u, userClientService, walletClientService, cardClientService)
 
 	server, _ := server.NewGrpcServer(cfg.ServerPort, s)
 	server.Run()

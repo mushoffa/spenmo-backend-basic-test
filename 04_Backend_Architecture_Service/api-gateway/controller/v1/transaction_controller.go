@@ -65,7 +65,7 @@ func (c *transactionController) Create(ctx *gin.Context) {
 
 // @Author Ahmad Ridwan Mushoffa
 // @Created 01/11/2021
-// @Updated 02/11/2021
+// @Updated 04/11/2021
 func (c *transactionController) Purchase(ctx *gin.Context) {
 	parent := context.Background()
 	defer parent.Done()
@@ -80,7 +80,10 @@ func (c *transactionController) Purchase(ctx *gin.Context) {
 		return
 	}
 
-	res, err := c.client.Purchase(context.Background(), &protos.PurchaseRequest{})
+	res, err := c.client.Purchase(context.Background(), &protos.PurchaseRequest{
+		Pan: request.PAN,
+		Amount: request.Amount,
+	})
 	if err != nil {
 		response.Meta.Message = err.Error()
 		ctx.JSON(http.StatusBadRequest, response)

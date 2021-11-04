@@ -80,10 +80,6 @@ github.com/modern-go/reflect2 v0.0.0-20180701023420-4b7aa43c6742 h1:Esafd1046DLD
 github.com/modern-go/reflect2 v0.0.0-20180701023420-4b7aa43c6742/go.mod h1:bx2lNnkwVCuqBIxFjflWJWanXIb3RllmbCylyMrvgv0=
 github.com/mushoffa/go-library v0.0.0-20211101154114-99601e5f0985 h1:n3U9DzZaYCyCh8V5+/jGHunQ2iskEOUzQ3kLTHU5xl0=
 github.com/mushoffa/go-library v0.0.0-20211101154114-99601e5f0985/go.mod h1:mdg1nXOxAFFxjKXoplu/049v8ug9tF4jFjS0br9x5D0=
-github.com/mushoffa/spenmo-proto v0.0.1 h1:HCxOqjIOI0X8kriUCdmB21OaHff/ewlXy8QAuutDNXE=
-github.com/mushoffa/spenmo-proto v0.0.1/go.mod h1:FoEYnaMwWXjObjuDj2gWZ11EoWA7h5znoTtainYGUOI=
-github.com/mushoffa/spenmo-proto v0.0.2 h1:sCkNz/IHy+6ZDTkWJFUx+TldUjTEb9c+AQqryAsMYgk=
-github.com/mushoffa/spenmo-proto v0.0.2/go.mod h1:FoEYnaMwWXjObjuDj2gWZ11EoWA7h5znoTtainYGUOI=
 github.com/mushoffa/spenmo-proto v0.0.3 h1:QvPkMnq3QUmAyY5t7WsSVNpr9Op50HiQkGyu0ND1eEc=
 github.com/mushoffa/spenmo-proto v0.0.3/go.mod h1:FoEYnaMwWXjObjuDj2gWZ11EoWA7h5znoTtainYGUOI=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=

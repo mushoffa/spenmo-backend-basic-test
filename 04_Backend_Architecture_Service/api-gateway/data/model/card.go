@@ -13,9 +13,9 @@ type CreateCardRequest struct {
 
 // @Author Ahmad Ridwan Mushoffa
 // @Created 02/11/2021
-// @Updated
+// @Updated 04/11/2021
 type LinkCardRequest struct {
-	CardID 		string 	`json:"cardId" binding:"required"`
-	WalletID 	string 	`json:"walletId" binding:"required"`
-	UserID 		string 	`json:"userId" binding:"required"`
+	PAN 			string 	`json:"pan" binding:"required"`
+	WalletID 		string 	`json:"walletId" binding:"required"`
+	AccountNumber 	string 	`json:"accountNumber" binding:"required"`
 }
