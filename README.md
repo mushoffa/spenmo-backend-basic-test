@@ -13,6 +13,17 @@
       * [Card Service](#4-2-card-service)
       * [Transaction Service](#4-2-transaction-service)
 
+```
+/spenmo-backend-basic-test
+.
+├── 01_Binary_Search_Tree
+├── 02_Array_Sequence
+├── 03_Backend_Database_Schema
+├── 04_Backend_Architecture_Service
+└── README.md
+
+```
+
 <a name="binary-search-tree"/>   
 
 ## 1. Binary Search Tree
