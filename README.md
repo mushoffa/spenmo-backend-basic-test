@@ -216,6 +216,7 @@ any format you like including README.md
 #### API Gateway
 ![](04_Backend_Architecture_Service/assets/api_gateway_architecture.png)
 * POST /v1/users, register new user
+Request:
 ```
 curl -X POST \
   http://localhost:9080/v1/users \
@@ -229,15 +230,51 @@ curl -X POST \
 }
 '
 ```
-
+Response:
+```json
+{
+    "data": {
+        "id": "c0d005fa-fa45-44db-bb70-42bbbf913360",
+        "created": "2021-11-05 14:06:53.311692 +0700 WIB m=+380.520015672",
+        "name": "John Banting",
+        "phoneNumber": "08121234567",
+        "email": "john.banting@gmailcom",
+        "dob": "01-05-2000"
+    },
+    "meta": {
+        "code": 200,
+        "message": "Success"
+    }
+}
+```
 * GET /v1/users, get all registered users
+Request:
 ```
 curl -X GET \
   http://localhost:9080/v1/users \
   -H 'cache-control: no-cache'
 ```
-
+Response:
+```json
+{
+    "data": [
+        {
+            "id": "c0d005fa-fa45-44db-bb70-42bbbf913360",
+            "created": "2021-11-05 07:06:53.311692 +0000 UTC",
+            "name": "John Banting",
+            "phoneNumber": "08121234567",
+            "email": "john.banting@gmailcom",
+            "dob": "01-05-2000"
+        }
+    ],
+    "meta": {
+        "code": 200,
+        "message": "Success"
+    }
+}
+```
 * POST /v1/wallets, create new wallet
+Request:
 ```
 curl -X POST \
   http://localhost:9080/v1/wallets \
@@ -249,21 +286,271 @@ curl -X POST \
 	"maxLimit": 1000000
 }'
 ```
-
+Response:
+```json
+{
+    "data": {
+        "id": "b21d8b38-0a26-41eb-bf4b-71442bf071ce",
+        "created": "2021-11-05 14:10:32.424446 +0700 WIB m=+593.376636262",
+        "name": "Group1",
+        "accountNumber": "08121234567"
+    },
+    "meta": {
+        "code": 200,
+        "message": "Success"
+    }
+}
+```
 * GET /v1/wallets, get all registered wallets
+Request:
 ```
 curl -X GET \
   http://localhost:9080/v1/wallets/ \
   -H 'cache-control: no-cache'
 ```
-
+Response:
+```json
+{
+    "data": [
+        {
+            "id": "b21d8b38-0a26-41eb-bf4b-71442bf071ce",
+            "created": "2021-11-05 07:10:32.424446 +0000 UTC",
+            "updated": "2021-11-05 07:22:02.439217 +0000 UTC",
+            "name": "Group1",
+            "balance": 100000,
+            "accountNumber": "08121234567"
+        }
+    ],
+    "meta": {
+        "code": 200,
+        "message": "Success"
+    }
+}
+```
 * GET /v1/wallets/user/:accountNumber, get wallet by user's account number
+Request:
 ```
 curl -X GET \
   http://localhost:9080/v1/wallets/user/08121234567 \
   -H 'cache-control: no-cache'
 ```
+Response:
+```json
+{
+    "data": [
+        {
+            "id": "b21d8b38-0a26-41eb-bf4b-71442bf071ce",
+            "created": "2021-11-05 07:10:32.424446 +0000 UTC",
+            "updated": "0001-01-01 00:00:00 +0000 UTC",
+            "name": "Group1",
+            "accountNumber": "08121234567"
+        }
+    ],
+    "meta": {
+        "code": 200,
+        "message": "Success"
+    }
+}
+```
+* POST /v1/cards, create card
+Request:
+```
+curl -X POST \
+  http://localhost:9080/v1/cards \
+  -H 'Content-Type: application/json' \
+  -H 'cache-control: no-cache' \
+  -d '{
+	"pan": "4008022841883554",
+	"expiryDate": "01/26",
+	"cardType": "VISA",
+	"limitDaily": 1000000,
+	"limitMonthly": 10000000
+}'
+```
+Response:
+```json
+{
+    "data": {
+        "id": "c24f6380-bc0f-445d-8224-f80c059928ca",
+        "created": "2021-11-05 14:16:40.501405 +0700 WIB m=+956.544907713",
+        "pan": "4008022841883554",
+        "expiryDate": "01/26",
+        "limitDaily": 1000000,
+        "limitMonthly": 10000000,
+        "type": "VISA"
+    },
+    "meta": {
+        "code": 200,
+        "message": "Success"
+    }
+}
+```
+* GET /v1/cards, get all registered card
+Request:
+```
+curl -X GET \
+  http://localhost:9080/v1/cards \
+  -H 'cache-control: no-cache'
+```
+Response:
+```json
+{
+    "data": [
+        {
+            "id": "c24f6380-bc0f-445d-8224-f80c059928ca",
+            "created": "2021-11-05 07:16:40.501405 +0000 UTC",
+            "updated": "0001-01-01 00:00:00 +0000 UTC",
+            "pan": "4008022841883554",
+            "expiryDate": "01/26",
+            "limitDaily": 1000000,
+            "limitMonthly": 10000000,
+            "type": "VISA",
+            "status": "UNLINKED"
+        }
+    ],
+    "meta": {
+        "code": 200,
+        "message": "Success"
+    }
+}
+```
+* GET /v1/cards/:pan, get card by PAN number
+Request:
+```
+curl -X GET \
+  http://localhost:9080/v1/cards/4008022841883554 \
+  -H 'cache-control: no-cache'
+```
+Response:
+```json
+{
+    "data": {
+        "id": "c24f6380-bc0f-445d-8224-f80c059928ca",
+        "created": "2021-11-05 07:16:40.501405 +0000 UTC",
+        "updated": "0001-01-01 00:00:00 +0000 UTC",
+        "pan": "4008022841883554",
+        "expiryDate": "01/26",
+        "limitDaily": 1000000,
+        "limitMonthly": 10000000,
+        "type": "VISA",
+        "status": "UNLINKED"
+    },
+    "meta": {
+        "code": 200,
+        "message": "Success"
+    }
+}
+```
 
+* POST /v1/cards/link, link card to wallet
+Request:
+```
+curl -X POST \
+  http://localhost:9080/v1/cards/link \
+  -H 'Content-Type: application/json' \
+  -H 'cache-control: no-cache' \
+  -d '{
+	"pan": "4008022841883554",
+	"walletId": "b21d8b38-0a26-41eb-bf4b-71442bf071ce",
+	"accountNumber": "08121234567"
+}'
+```
+Response:
+```json
+{
+    "data": {
+        "id": "c24f6380-bc0f-445d-8224-f80c059928ca",
+        "created": "2021-11-05 07:16:40.501405 +0000 UTC",
+        "updated": "2021-11-05 07:16:40.501405 +0000 UTC",
+        "pan": "4008022841883554",
+        "name": "John Banting",
+        "expiryDate": "01/26",
+        "limitDaily": 1000000,
+        "limitMonthly": 10000000,
+        "type": "VISA",
+        "status": "LINKED",
+        "walletId": "b21d8b38-0a26-41eb-bf4b-71442bf071ce",
+        "userId": "c0d005fa-fa45-44db-bb70-42bbbf913360"
+    },
+    "meta": {
+        "code": 200,
+        "message": "Success"
+    }
+}
+```
+* POST /v1/transactions/purchase
+Request:
+```
+curl -X POST \
+  http://localhost:9080/v1/transactions/purchase \
+  -H 'Content-Type: application/json' \
+  -H 'cache-control: no-cache' \
+  -d '{
+	"pan":"4008022841883554",
+	"amount": 20000
+}'
+```
+Response:
+```json
+{
+    "data": {
+        "transaction": {
+            "id": "6b24d2de-1b59-40f6-acc1-d48a9fb34f51",
+            "date": "05-11-2021",
+            "time": "14:22:39",
+            "accountName": "John Banting",
+            "pan": "4008022841883554",
+            "walletId": "b21d8b38-0a26-41eb-bf4b-71442bf071ce",
+            "walletName": "Group1",
+            "amount": 20000,
+            "transactionType": "DEBIT",
+            "referenceNumber": "DEBIT-4008022841883554-1636096959",
+            "status": "SUCCESS"
+        }
+    },
+    "meta": {
+        "code": 200,
+        "message": "Success"
+    }
+}
+```
+* POST /v1/transactions/topup
+Request:
+```
+curl -X POST \
+  http://localhost:9080/v1/transactions/topup \
+  -H 'Content-Type: application/json' \
+  -H 'cache-control: no-cache' \
+  -d '{
+	"accountNumber": "08121234567",
+	"walletId": "b21d8b38-0a26-41eb-bf4b-71442bf071ce",
+	"amount": 100000
+}'
+```
+Response:
+```json
+{
+    "data": {
+        "transaction": {
+            "id": "156c608b-b00c-40e5-b7d8-9468bcfc9c9d",
+            "date": "05-11-2021",
+            "time": "14:22:02",
+            "accountNumber": "08121234567",
+            "accountName": "John Banting",
+            "walletId": "b21d8b38-0a26-41eb-bf4b-71442bf071ce",
+            "walletName": "Group1",
+            "amount": 100000,
+            "transactionType": "TOPUP",
+            "referenceNumber": "TOPUP-08121234567-1636096922",
+            "status": "SUCCESS"
+        }
+    },
+    "meta": {
+        "code": 200,
+        "message": "Success"
+    }
+}
+```
 <a name="4-2-user-service"/>
 
 #### User Service
