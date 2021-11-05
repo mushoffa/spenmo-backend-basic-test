@@ -215,6 +215,54 @@ any format you like including README.md
 
 #### API Gateway
 ![](04_Backend_Architecture_Service/assets/api_gateway_architecture.png)
+* POST /v1/users, register new user
+```
+curl -X POST \
+  http://localhost:9080/v1/users \
+  -H 'Content-Type: application/json' \
+  -H 'cache-control: no-cache' \
+  -d '{
+	"name": "John Banting",
+	"phoneNumber": "08121234567",
+	"email": "john.banting@gmailcom",
+	"dob": "01-05-2000"
+}
+'
+```
+
+* GET /v1/users, get all registered users
+```
+curl -X GET \
+  http://localhost:9080/v1/users \
+  -H 'cache-control: no-cache'
+```
+
+* POST /v1/wallets, create new wallet
+```
+curl -X POST \
+  http://localhost:9080/v1/wallets \
+  -H 'Content-Type: application/json' \
+  -H 'cache-control: no-cache' \
+  -d '{
+	"accountNumber": "08121234567",
+	"name": "Group1",
+	"maxLimit": 1000000
+}'
+```
+
+* GET /v1/wallets, get all registered wallets
+```
+curl -X GET \
+  http://localhost:9080/v1/wallets/ \
+  -H 'cache-control: no-cache'
+```
+
+* GET /v1/wallets/user/:accountNumber, get wallet by user's account number
+```
+curl -X GET \
+  http://localhost:9080/v1/wallets/user/08121234567 \
+  -H 'cache-control: no-cache'
+```
 
 <a name="4-2-user-service"/>
 
