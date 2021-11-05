@@ -11,7 +11,11 @@
    * [Run the Program](#2-run)
 5. [Backend Database Schema](#backend-database-schema)
 6. [Backend Architecture Service](#backend-architecture-service)
-    * [Prerequisite](#4-prerequisite)
+    * [Getting Started](#4-getting-started)
+      * [Prerequisite](#4-1-prerequisite)
+      * [Installation](#4-1-installation)
+      	* [Nohup](#nohup)
+      	* [Docker](#docker)
     * [System Architecture](#4-system-architecture)
       * [API Gateway](#4-2-api-gateway)
       * [User Service](#4-2-user-service)
@@ -197,15 +201,36 @@ any format you like including README.md
 6. [Bonus] Implement API rate limiting
 ### Solution
 
-<a name="4-prerequisite"/> 
+<a name="4-getting-started"/>
 
-### Prerequisite
+### Getting Started
+
+<a name="4-1-prerequisite"/> 
+
+#### Prerequisite
 1.  Please make sure you have [Go](https://golang.org/doc/install) installed on your system.
 2.  Please make sure you have [Docker](https://docs.docker.com/engine/install/) installed on your system.
 3.  Please make sure you have [Docker Compose](https://docs.docker.com/compose/install/) installed on your system.
 4.  Please make sure you have [gRPC Go Plugin](https://grpc.io/docs/languages/go/quickstart/) installed on your system.
 5.  Please make sure you have [grpcurl](https://github.com/fullstorydev/grpcurl) installed on your system. It is a command-line tools to communicate to gRPC server.
 
+<a name="4-1-installation"/> 
+
+#### Installation
+
+<a name="nohup"/>
+
+##### Nohup
+```bash
+/spenmo-backend-basic-test/04_Backend_Architecture_Service$ make all
+```
+
+<a name="docker"/>
+
+##### Docker
+```bash
+/spenmo-backend-basic-test/04_Backend_Architecture_Service$ make docker
+```
 <a name="4-system-architecture"/>
 
 ### System Architecture
@@ -215,6 +240,9 @@ any format you like including README.md
 
 #### API Gateway
 ![](04_Backend_Architecture_Service/assets/api_gateway_architecture.png)
+
+Postman link: [collection](https://www.getpostman.com/collections/3408681ed073ff6947c8)
+
 * POST /v1/users, register new user
 Request:
 ```
