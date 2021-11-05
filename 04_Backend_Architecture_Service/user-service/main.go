@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"user-service/config"
 	"user-service/data/datasource/postgres"
@@ -24,6 +25,8 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error loading environment config: %v", err)
 	}
+
+	fmt.Println("Config: ", cfg)
 
 	db, err := postgres.NewUserDB(&cfg)
 	if err != nil {
