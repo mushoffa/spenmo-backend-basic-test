@@ -1,6 +1,6 @@
-#FROM golang:1.15 AS builder 
+FROM golang:1.15 AS builder 
 #RUN apk --no-cache
-FROM golang:alpine AS builder
+#FROM golang:alpine AS builder
 
 WORKDIR /build
 COPY ./user-service .

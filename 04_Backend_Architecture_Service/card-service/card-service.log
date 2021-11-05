@@ -1,0 +1,17 @@
+
+[35m(/Users/mushoffa/go/pkg/mod/github.com/mushoffa/go-library@v0.0.0-20211101154114-99601e5f0985/database/postgres.go:94)[0m 
+[33m[2021-11-05 19:19:47][0m  [36;1m[186.27ms][0m  CREATE TABLE "cards" ("id" text,"created" timestamp with time zone,"updated" timestamp with time zone,"pan" text,"name" text,"expiry_date" text,"limit_daily" numeric,"limit_monthly" numeric,"card_type" text,"status" text,"pin" text,"wallet_id" text,"user_id" text , PRIMARY KEY ("id"))  
+[36;31m[0 rows affected or returned ][0m 
+2021/11/05 19:19:47 Grpc Server listening on port [::]:9083
+
+[35m(/Users/mushoffa/go/pkg/mod/github.com/mushoffa/go-library@v0.0.0-20211101154114-99601e5f0985/database/postgres.go:84)[0m 
+[33m[2021-11-05 19:19:51][0m  [36;1m[36.61ms][0m  SELECT * FROM "cards"    
+[36;31m[0 rows affected or returned ][0m 
+
+[35m(/Users/mushoffa/go/pkg/mod/github.com/mushoffa/go-library@v0.0.0-20211101154114-99601e5f0985/database/postgres.go:74)[0m 
+[33m[2021-11-05 19:19:54][0m  [36;1m[8.76ms][0m  SELECT * FROM "cards"  WHERE (pan = '') LIMIT 1  
+[36;31m[0 rows affected or returned ][0m 
+
+[35m(/Users/mushoffa/go/pkg/mod/github.com/mushoffa/go-library@v0.0.0-20211101154114-99601e5f0985/database/postgres.go:106)[0m 
+[33m[2021-11-05 19:19:54][0m  [36;1m[18.50ms][0m  INSERT INTO "cards" ("id","created","updated","pan","name","expiry_date","limit_daily","limit_monthly","card_type","status","pin","wallet_id","user_id") VALUES ('4e1a5510-468d-4c6b-842b-d30b6ec7a586','2021-11-05 19:19:54','0000-00-00 00:00:00','4008022841883554','','01/26',1e+06,1e+07,'VISA','UNLINKED','','','') RETURNING "cards"."id"  
+[36;31m[1 rows affected or returned ][0m 

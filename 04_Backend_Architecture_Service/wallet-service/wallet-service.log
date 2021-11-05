@@ -1,0 +1,21 @@
+
+[35m(/Users/mushoffa/go/pkg/mod/github.com/mushoffa/go-library@v0.0.0-20211101154114-99601e5f0985/database/postgres.go:94)[0m 
+[33m[2021-11-05 18:48:39][0m  [36;1m[559.31ms][0m  CREATE TABLE "wallets" ("id" text,"created" timestamp with time zone,"updated" timestamp with time zone,"name" text,"balance" numeric,"max_limit" numeric,"account_number" text , PRIMARY KEY ("id"))  
+[36;31m[0 rows affected or returned ][0m 
+2021/11/05 18:48:39 Grpc Server listening on port [::]:9082
+
+[35m(/Users/mushoffa/go/pkg/mod/github.com/mushoffa/go-library@v0.0.0-20211101154114-99601e5f0985/database/postgres.go:74)[0m 
+[33m[2021-11-05 18:48:51][0m  [36;1m[13.70ms][0m  SELECT * FROM "wallets"  WHERE (account_number = '08121234567') LIMIT 1  
+[36;31m[0 rows affected or returned ][0m 
+
+[35m(/Users/mushoffa/go/pkg/mod/github.com/mushoffa/go-library@v0.0.0-20211101154114-99601e5f0985/database/postgres.go:74)[0m 
+[33m[2021-11-05 18:49:01][0m  [36;1m[5.60ms][0m  SELECT * FROM "wallets"  WHERE (id = '') LIMIT 1  
+[36;31m[0 rows affected or returned ][0m 
+
+[35m(/Users/mushoffa/go/pkg/mod/github.com/mushoffa/go-library@v0.0.0-20211101154114-99601e5f0985/database/postgres.go:106)[0m 
+[33m[2021-11-05 18:49:01][0m  [36;1m[8.54ms][0m  INSERT INTO "wallets" ("id","created","updated","name","balance","max_limit","account_number") VALUES ('fc536cc2-9e74-41c1-80e5-dac27593cf27','2021-11-05 18:49:01','0000-00-00 00:00:00','Group1',0,0,'08121234567') RETURNING "wallets"."id"  
+[36;31m[1 rows affected or returned ][0m 
+
+[35m(/Users/mushoffa/go/pkg/mod/github.com/mushoffa/go-library@v0.0.0-20211101154114-99601e5f0985/database/postgres.go:74)[0m 
+[33m[2021-11-05 18:49:04][0m  [36;1m[10.52ms][0m  SELECT * FROM "wallets"  WHERE (account_number = '08121234567') LIMIT 1  
+[36;31m[1 rows affected or returned ][0m 

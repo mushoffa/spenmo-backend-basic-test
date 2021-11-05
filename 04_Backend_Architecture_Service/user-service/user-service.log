@@ -1,0 +1,18 @@
+Config:  {9081 localhost 5481 user admin password false}
+
+[35m(/Users/mushoffa/go/pkg/mod/github.com/mushoffa/go-library@v0.0.0-20211101080025-c0802405fb69/database/postgres.go:94)[0m 
+[33m[2021-11-05 18:48:35][0m  [36;1m[314.07ms][0m  CREATE TABLE "users" ("id" text,"created" timestamp with time zone,"name" text,"phone_number" text,"email" text,"dob" text , PRIMARY KEY ("id"))  
+[36;31m[0 rows affected or returned ][0m 
+2021/11/05 18:48:35 Grpc Server listening on port [::]:9081
+
+[35m(/Users/mushoffa/go/pkg/mod/github.com/mushoffa/go-library@v0.0.0-20211101080025-c0802405fb69/database/postgres.go:74)[0m 
+[33m[2021-11-05 18:48:44][0m  [36;1m[38.58ms][0m  SELECT * FROM "users"  WHERE (phone_number = '08121234567') LIMIT 1  
+[36;31m[0 rows affected or returned ][0m 
+
+[35m(/Users/mushoffa/go/pkg/mod/github.com/mushoffa/go-library@v0.0.0-20211101080025-c0802405fb69/database/postgres.go:106)[0m 
+[33m[2021-11-05 18:48:44][0m  [36;1m[23.28ms][0m  INSERT INTO "users" ("id","created","name","phone_number","email","dob") VALUES ('f43fd601-8d9c-4f6c-b621-83f61dfb8ad4','2021-11-05 18:48:44','John Banting','08121234567','john.banting@gmailcom','01-05-2000') RETURNING "users"."id"  
+[36;31m[1 rows affected or returned ][0m 
+
+[35m(/Users/mushoffa/go/pkg/mod/github.com/mushoffa/go-library@v0.0.0-20211101080025-c0802405fb69/database/postgres.go:74)[0m 
+[33m[2021-11-05 18:49:01][0m  [36;1m[12.58ms][0m  SELECT * FROM "users"  WHERE (phone_number = '08121234567') LIMIT 1  
+[36;31m[1 rows affected or returned ][0m 

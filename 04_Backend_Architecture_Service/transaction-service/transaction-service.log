@@ -1,0 +1,9 @@
+
+[35m(/Users/mushoffa/go/pkg/mod/github.com/mushoffa/go-library@v0.0.0-20211101154114-99601e5f0985/database/postgres.go:94)[0m 
+[33m[2021-11-05 18:48:40][0m  [36;1m[135.63ms][0m  CREATE TABLE "transactions" ("id" text,"date" text,"time" text,"account_number" text,"account_name" text,"pan" text,"amount" numeric,"wallet_id" text,"wallet_name" text,"transaction_type" text,"reference_number" text,"status" text,"description" text , PRIMARY KEY ("id"))  
+[36;31m[0 rows affected or returned ][0m 
+
+[35m(/Users/mushoffa/go/pkg/mod/github.com/mushoffa/go-library@v0.0.0-20211101154114-99601e5f0985/database/postgres.go:94)[0m 
+[33m[2021-11-05 18:48:40][0m  [36;1m[80.26ms][0m  CREATE TABLE "limits" ("id" bigserial,"rating" text,"limit_daily" text,"limit_monthly" text , PRIMARY KEY ("id"))  
+[36;31m[0 rows affected or returned ][0m 
+2021/11/05 18:48:40 Grpc Server listening on port [::]:9084
